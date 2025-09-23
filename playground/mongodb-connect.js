@@ -12,10 +12,11 @@ async function run() {
         const db = client.db('TodoApp');
 
         // 4️⃣ Insert (no callback; use await)
-        // const result = await db.collection('Todos').insertOne({
-        //     text: 'Something to do',
-        //     completed: false
-        // });
+        const result = await db.collection('Users').insertOne({
+            name: 'Amina',
+            age: 24,
+            location: 'Paris'
+        });
 
         // // 5️⃣ Log the inserted id
         // console.log('Inserted todo with id:', JSON.stringify(result, undefined, 2));

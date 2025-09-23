@@ -19,28 +19,32 @@ async function run() {
         //     console.log('Unable to fetch todos', err)
         // })
 
-        await db.collection('Users').find({
-            name: 'Amina'
-        }).toArray().then((docs)=> {
-            console.log('Users'),
-            console.log(JSON.stringify(docs,undefined,2))
-        },(err) =>{
-            console.log('Unable to fetch todos', err)
+        
+        //deleteMany
+        // await db.collection('Todos').deleteMany({
+        //     text: "Something to do"
+        // }) .then ((result)=>{
+        //     console.log(result)
+        // })
+
+        //deleteOne
+        // await db.collection('Todos').deleteOne({
+        //     text: "study nodejs"
+        // }) .then ((result)=>{
+        //     console.log(result)
+        // })
+
+        await db.collection('Users').deleteMany({
+            name: "Amina"
+        }) .then ((result)=>{
+            console.log(result)
         })
 
-        await db.collection('Todos').find().count().then((count)=> {
-            console.log('Todos count: ', count)
-            // console.log(JSON.stringify(docs,undefined,2))
-        },(err) =>{
-            console.log('Unable to fetch todos', err)
+        //findOneAndDelete
+        await db.collection('Users').findOneAndDelete({_id: new ObjectId("68d159e942fe3e426446cdfe")}).then ((result)=>{
+            console.log(result)
         })
 
-        await db.collection('Todos').countDocuments().then((count)=> {
-            console.log('Todos count: ', count)
-            // console.log(JSON.stringify(docs,undefined,2))
-        },(err) =>{
-            console.log('Unable to fetch todos', err)
-        })
 
         
     }
