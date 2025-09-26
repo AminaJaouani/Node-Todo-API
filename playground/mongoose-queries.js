@@ -43,6 +43,3 @@ User.findById(id).then((user) =>{
     console.log(e)
 })
 
-//user.findby Id 
-// handle cases
-
