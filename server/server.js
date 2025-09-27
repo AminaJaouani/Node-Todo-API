@@ -8,6 +8,7 @@ var {User} = require('./models/user')
 
 var app = express();
 const port = process.env.PORT|| 3000
+
 console.log('Connecting to:', process.env.MONGODB_URL || 'mongodb://localhost:27017/TodoApp');
 
 app.use(bodyParser.json())
