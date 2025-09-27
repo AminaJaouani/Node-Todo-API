@@ -9,7 +9,6 @@ var {User} = require('./models/user')
 var app = express();
 const port = process.env.PORT|| 3000
 
-console.log('Connecting to:', process.env.MONGODB_URL || 'mongodb://localhost:27017/TodoApp');
 
 app.use(bodyParser.json())
 
@@ -53,6 +52,28 @@ app.get('/todos/:id',(req,res)=>{
         res.status(400).send()
     })
     
+})
+
+app.delete('/todos/:id', (req,res)=>{
+    // get the id
+    var id = req.params.id
+
+    if (!ObjectId.isValid(id)){
+        return res.status(404).send("id not valid")
+    }
+
+    Todo.findByIdAndDelete(id).then((docs) =>{
+        if(!docs){
+            return res.status(404).send("id doesn't exist")
+        }
+        res.send(docs)
+    }).catch((e)=>{
+        res.status(400).send(e)
+    })
+    //remove todo by id
+        //seccess
+        //error
+    //
 })
 
 app.listen(port, ()=>{
