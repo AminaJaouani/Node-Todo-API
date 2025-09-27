@@ -11,9 +11,9 @@
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
-  "engines":{
-    "node": "24.8.0"
-  },
+  "engines": {
+  "node": "20.x"
+},
   "dependencies": {
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
