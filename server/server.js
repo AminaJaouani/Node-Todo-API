@@ -8,20 +8,23 @@ var {User} = require('./models/user')
 
 var app = express();
 const port = process.env.PORT|| 3000
+console.log('Connecting to:', process.env.MONGODB_URL || 'mongodb://localhost:27017/TodoApp');
 
 app.use(bodyParser.json())
 
 //ressource creations
-app.post('/todos', async (req, res) => {
-  try {
-    const todo = new Todo({ text: req.body.text });
-    const doc = await todo.save();
-    res.status(201).send(doc);
-  } catch (e) {
-    console.error(e);
-    res.status(400).send(e);
-  }
-});
+app.post('/todos', (req,res)=>{
+    var todo = new Todo ({
+        text: req.body.text
+    })
+
+    todo.save().then((doc)=>{
+        res.send(doc)
+    }, (e)=>{
+        res.status(400).send(e)
+    })
+    console.log(req.body)
+})
 
 app.get('/todos', (req,res)=>{
     Todo.find().then((todos)=>{
