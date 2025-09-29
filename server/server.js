@@ -62,11 +62,11 @@ app.delete('/todos/:id', (req,res)=>{
         return res.status(404).send("id not valid")
     }
 
-    Todo.findByIdAndDelete(id).then((docs) =>{
-        if(!docs){
+    Todo.findByIdAndDelete(id).then((todo) =>{
+        if(!todo){
             return res.status(404).send("id doesn't exist")
         }
-        res.send(docs)
+        res.send({todo})
     }).catch((e)=>{
         res.status(400).send(e)
     })
