@@ -70,12 +70,12 @@ app.delete('/todos/:id', (req,res)=>{
     })
 })
 
-// app.put('/todos/:id')
 app.patch("/todos/:id", (req,res)=>{
     var id = req.params.id
     var body = _.pick(req.body, ['text', 'completed'])
 
     if (!ObjectId.isValid(id)){
+        // console.log('id s not right')
         return res.status(404).send("id not valid")
     }
 
