@@ -1,3 +1,5 @@
+require('./config/config')
+
 const _ = require("lodash")
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -22,7 +24,6 @@ app.post('/todos', (req,res)=>{
     }, (e)=>{
         res.status(400).send(e)
     })
-    console.log(req.body)
 })
 
 app.get('/todos', (req,res)=>{
@@ -75,7 +76,6 @@ app.patch("/todos/:id", (req,res)=>{
     var body = _.pick(req.body, ['text', 'completed'])
 
     if (!ObjectId.isValid(id)){
-        // console.log('id s not right')
         return res.status(404).send("id not valid")
     }
 
