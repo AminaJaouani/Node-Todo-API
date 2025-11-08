@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Todo App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>Todo App</h1>
+
+    <!-- Auth section -->
+    <div id="auth-section">
+      <div class="card">
+        <h2>Register</h2>
+        <form id="register-form">
+          <label>
+            Email
+            <input type="email" id="register-email" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="register-password" required />
+          </label>
+          <button type="submit">Create account</button>
+          <p class="info" id="register-message"></p>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Login</h2>
+        <form id="login-form">
+          <label>
+            Email
+            <input type="email" id="login-email" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="login-password" required />
+          </label>
+          <button type="submit">Login</button>
+          <p class="info" id="login-message"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- App section (visible only when logged in) -->
+    <div id="app-section" class="hidden">
+      <div class="top-bar">
+        <div>
+          Logged in as: <span id="user-email"></span>
+        </div>
+        <button id="logout-btn" class="secondary">Logout</button>
+      </div>
+
+      <div class="card">
+        <h2>Add Todo</h2>
+        <form id="todo-form">
+          <label>
+            New todo
+            <input type="text" id="todo-text" placeholder="What needs to be done?" required />
+          </label>
+          <button type="submit">Add</button>
+          <p class="info" id="todo-message"></p>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Your Todos</h2>
+        <ul id="todo-list" class="todo-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
